@@ -1,4 +1,4 @@
-package org.enset.customerservice.entities;
+package org.ghizlane.customerservice.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
