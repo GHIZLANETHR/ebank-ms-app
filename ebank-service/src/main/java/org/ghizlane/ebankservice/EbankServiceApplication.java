@@ -1,12 +1,13 @@
 package org.ghizlane.ebankservice;
 
-
 import org.ghizlane.ebankservice.entities.BankAccount;
 import org.ghizlane.ebankservice.services.EbankService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.UUID;
 
 @SpringBootApplication
 public class EbankServiceApplication {
@@ -19,10 +20,11 @@ public class EbankServiceApplication {
     CommandLineRunner commandLineRunner(EbankService ebankService){
         return args -> {
             for (int i = 1; i <= 3; i++) {
-                for (int j = 0; j <5 ; j++) {
+                for (int j = 0; j < 5; j++) {
                     ebankService.save(BankAccount.builder()
-                            .type(Math.random()>0.5? "CURRENT-ACCOUNT":"SAVING-ACCOUNT")
-                            .balance(1000+ Math.random()*60000)
+                            .id(UUID.randomUUID().toString()) // <-- Génération d'un ID unique
+                            .type(Math.random() > 0.5 ? "CURRENT-ACCOUNT" : "SAVING-ACCOUNT")
+                            .balance(1000 + Math.random() * 60000)
                             .customerId(i)
                             .build());
                 }
